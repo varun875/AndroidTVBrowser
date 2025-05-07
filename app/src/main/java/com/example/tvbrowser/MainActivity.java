@@ -82,7 +82,13 @@ public class MainActivity extends Activity {
         settings.setDomStorageEnabled(true);
         settings.setCacheMode(WebSettings.LOAD_DEFAULT);
         settings.setLoadsImagesAutomatically(true);
-        settings.setBlockNetworkImage(true); // Loads text first for performance
+        settings.setBlockNetworkImage(true); // Load text first
+
+        // Enable focus & scroll support
+        webView.setFocusable(true);
+        webView.setFocusableInTouchMode(true);
+        webView.requestFocus();
+        webView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
 
         FrameLayout.LayoutParams webViewParams = new FrameLayout.LayoutParams(
                 FrameLayout.LayoutParams.MATCH_PARENT,
@@ -140,17 +146,18 @@ public class MainActivity extends Activity {
 
         // Cursor
         cursor = new ImageView(this);
-        cursor.setImageResource(R.drawable.cursor); // Place your cursor.png in res/drawable
+        cursor.setImageResource(R.drawable.cursor); // Add cursor.png to res/drawable
         FrameLayout.LayoutParams cursorParams = new FrameLayout.LayoutParams(48, 48);
         cursorParams.leftMargin = cursorX;
         cursorParams.topMargin = cursorY;
         cursor.setLayoutParams(cursorParams);
 
+        // Add views
         rootLayout.addView(webView);
         rootLayout.addView(urlBar);
         rootLayout.addView(progressBar);
         rootLayout.addView(spinner);
-        rootLayout.addView(cursor);
+        rootLayout.addView(cursor); // Cursor always on top
 
         setContentView(rootLayout);
     }
@@ -163,9 +170,11 @@ public class MainActivity extends Activity {
             switch (event.getKeyCode()) {
                 case KeyEvent.KEYCODE_DPAD_UP:
                     cursorY = Math.max(150, cursorY - moveStep);
+                    webView.pageUp(false);
                     break;
                 case KeyEvent.KEYCODE_DPAD_DOWN:
                     cursorY += moveStep;
+                    webView.pageDown(false);
                     break;
                 case KeyEvent.KEYCODE_DPAD_LEFT:
                     cursorX = Math.max(0, cursorX - moveStep);

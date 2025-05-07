@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="?android:attr/windowBackground">
+
+    <!-- Dark Mode Checkbox -->
+    <CheckBox
+        android:id="@+id/dark_mode_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enable Dark Mode"
+        android:padding="16dp" />
+
+    <!-- Home URL EditText -->
+    <EditText
+        android:id="@+id/home_url_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Home URL"
+        android:text="https://lite.duckduckgo.com"
+        android:padding="16dp"
+        android:textSize="16sp" />
+
+    <!-- Clear Cookies Button -->
+    <Button
+        android:id="@+id/clear_cookies_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Clear Cookies"
+        android:padding="16dp" />
+
+    <!-- Clear History Button -->
+    <Button
+        android:id="@+id/clear_history_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Clear History"
+        android:padding="16dp" />
+
+    <!-- Save Settings Button -->
+    <Button
+        android:id="@+id/save_settings_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save Settings"
+        android:padding="16dp" />
+
+</LinearLayout>
